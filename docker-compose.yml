@@ -1,0 +1,76 @@
+version: '3'
+
+networks:
+  nginx-doctrine-api:
+
+services:
+
+  # nginx
+  nginx-service-doctrine-api:
+    image: nginx:stable-alpine
+    container_name: nginx-container-doctrine-api
+    ports:
+      - "7010:80"
+    volumes:
+      - ./app:/var/www/project
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php74-service-doctrine-api
+      - mysql8-service-doctrine-api
+    networks:
+      - nginx-doctrine-api
+
+  # php
+  php74-service-doctrine-api:
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    container_name: php74-container-doctrine-api
+    ports:
+      - "9610:9000"
+    volumes:
+      - ./app:/var/www/project
+    networks:
+      - nginx-doctrine-api
+  # Database
+  db_data-api:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - nginx-doctrine-api
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      -  mysql8-service-doctrine-api
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8076:80'
+    environment:
+      PMA_HOST: mysql8-service-doctrine-api
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - nginx-doctrine-api
+  # mysql
+  mysql8-service-doctrine-api:
+    image: mysql:8
+    container_name: mysql8-container-doctrine-api
+    ports:
+      - "4316:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always # always restart unless stopped manually
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+    networks:
+      - nginx-doctrine-api
