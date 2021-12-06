@@ -87,6 +87,9 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/doctrine-migrations-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/web-profiler-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/translation" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

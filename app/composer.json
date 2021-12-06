@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "2.0.0",
         "doctrine/orm": "^2.4.5",
         "nelmio/cors-bundle": "^1.5",
+        "nesbot/carbon": "^2.55",
         "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
         "symfony/asset": "4.2.*|4.3.*",
         "symfony/console": "4.2.*",
@@ -71,6 +72,8 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "1.11"
+        "symfony/maker-bundle": "1.11",
+        "symfony/stopwatch": "4.2.*|4.3.*",
+        "symfony/web-profiler-bundle": "4.2.*|4.3.*"
     }
 }

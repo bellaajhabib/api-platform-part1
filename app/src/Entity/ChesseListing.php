@@ -3,11 +3,19 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass="App\Repository\ChesseListingRepository")
+ * @ApiResource(
+ *     collectionOperations={"get", "post"},
+ *     itemOperations={
+ *          "get"={"path"="/chesslover/{id}"},
+ *          "put"
+ *     },
+ *     shortName="cheeses"
+ * )
+ * @ORM\Entity(repositoryClass="App\Repository\CheeseListingRepository")
  */
 class ChesseListing
 {
@@ -43,6 +51,11 @@ class ChesseListing
      */
     private $isPublished;
 
+    function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -65,13 +78,12 @@ class ChesseListing
         return $this->description;
     }
 
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
 
+    public function setTextDescription(string $description): self
+    {
+        $this->description = nl2br($description);
         return $this;
     }
-
     public function getPrice(): ?int
     {
         return $this->price;
@@ -84,16 +96,19 @@ class ChesseListing
         return $this;
     }
 
+//    public function setCreatedAt(\DateTimeInterface $createdAt): self
+//    {
+//        $this->createdAt = $createdAt;
+//
+//        return $this;
+//    }
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function getCreateAtGo(): string
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+       return  Carbon::instance($this->getCreatedAt())->diffForHumans();
     }
 
     public function getIsPublished(): ?bool
