@@ -63,7 +63,6 @@
       <path value="$PROJECT_DIR$/app/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/security-http" />
-      <path value="$PROJECT_DIR$/app/vendor/symfony/inflector" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/app/vendor/psr/link" />
@@ -86,6 +85,10 @@
       <path value="$PROJECT_DIR$/app/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/inflector" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1">

@@ -11,16 +11,10 @@ F
 app/config/routes.yaml,a\e\ae49bde4e37a8994608395409675d5a14cfb1d8f
 H
 app/config/services.yaml,1\4\14e613bc89fc8a782b70dd8af2f680390710ac32
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
-A
-app/composer.json,c\d\cda2529fcd4a1b204404a4f545346869efacdb8e
 D
 app/public/index.php,d\f\df187f96b153386aefda0ec4775d5524cf695467
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-8
-app/.env,b\1\b17d0739894748a962de961862627cda63749c57
 B
 nginx/default.conf,c\5\c5c1494413fd357d4eecd08553b4090aa489571b
 >
@@ -31,8 +25,6 @@ Q
 !app/config/packages/doctrine.yaml,2\e\2ea3e2d06c221881914afe1d94aca6e2d54735af
 P
  app/config/packages/routing.yaml,8\4\84e1bd2ed2d731599ea505bbd760aefc5abc4c9c
-F
-app/config/bundles.php,b\4\b4961d78ac56e54cb28668f65c4ea457390c2994
 U
 %app/config/packages/test/routing.yaml,4\9\499e611ab9b83e6120d80bdd0f32d22bec09bd5d
 W
