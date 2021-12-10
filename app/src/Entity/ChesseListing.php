@@ -10,6 +10,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 /**
  * @ApiResource(
  *     collectionOperations={"get", "post"},
@@ -24,6 +26,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ORM\Entity(repositoryClass="App\Repository\ChesseListingRepository")
  * @ApiFilter(BooleanFilter::class,properties={"isPublished"})
  * @ApiFilter(SearchFilter::class, properties={"title": "partial"})
+ * @ApiFilter(RangeFilter::class, properties={"price"})
+ * @ApiFilter(PropertyFilter::class)
+ *
  */
 class ChesseListing
 {
@@ -44,7 +49,7 @@ class ChesseListing
      * The price of this delicious cheese, in cents
      *
      * @ORM\Column(type="text")
-     * @Groups({"cheese_listing:read"})
+     *  @Groups({"cheese_listing:read", "cheese_listing:write"})
      */
     private $description;
 
@@ -89,6 +94,18 @@ class ChesseListing
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    /**
+     *  @Groups({"cheese_listing:read"})
+     * @return string|null
+     *
+     */
+    public function getShortDescription():?string{
+        if (strlen($this->description)<2){
+         return  $this->description;
+        }
+        return  substr($this->description,0,2).'....';
     }
     public function setDescription(string $description): self
     {
