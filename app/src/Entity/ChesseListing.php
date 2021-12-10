@@ -21,7 +21,11 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     },
  *     shortName="cheeses",
  *     normalizationContext={"groups"={"cheese_listing:read"}, "swagger_definition_name"="Read"},
- *     denormalizationContext={"groups"={"cheese_listing:write"}, "swagger_definition_name"="Write"}
+ *     denormalizationContext={"groups"={"cheese_listing:write"}, "swagger_definition_name"="Write"},
+ *     attributes={
+ *     "pagination_items_pre_page"=10,
+ *      "formats"={"jsonld", "json", "html", "jsonhal", "csv"={"text/csv"}}
+ *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ChesseListingRepository")
  * @ApiFilter(BooleanFilter::class,properties={"isPublished"})
